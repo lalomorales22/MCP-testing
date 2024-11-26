@@ -3,9 +3,8 @@ import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Required for flashing messages
+app.secret_key = 'your_secret_key_here'
 
-# Database initialization
 def init_db():
     with sqlite3.connect('users.db') as conn:
         conn.execute('''
@@ -17,10 +16,8 @@ def init_db():
         )
         ''')
 
-# Initialize the database when the app starts
 init_db()
 
-# HTML template with embedded CSS and JavaScript
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -34,13 +31,11 @@ HTML_TEMPLATE = '''
             --background-color: #f8fafc;
             --text-color: #1e293b;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -48,7 +43,6 @@ HTML_TEMPLATE = '''
             background-color: var(--background-color);
             padding: 2rem;
         }
-
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -57,23 +51,19 @@ HTML_TEMPLATE = '''
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         h1 {
             color: var(--text-color);
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
-
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-
         input {
             width: 100%;
             padding: 0.75rem;
@@ -81,13 +71,11 @@ HTML_TEMPLATE = '''
             border-radius: 4px;
             font-size: 1rem;
         }
-
         input:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-
         button {
             background-color: var(--primary-color);
             color: white;
@@ -99,26 +87,21 @@ HTML_TEMPLATE = '''
             width: 100%;
             transition: background-color 0.2s;
         }
-
         button:hover {
             background-color: #1d4ed8;
         }
-
         .flash-messages {
             margin-bottom: 1.5rem;
         }
-
         .flash {
             padding: 1rem;
             border-radius: 4px;
             margin-bottom: 0.5rem;
         }
-
         .flash.success {
             background-color: #dcfce7;
             color: #166534;
         }
-
         .flash.error {
             background-color: #fee2e2;
             color: #991b1b;
